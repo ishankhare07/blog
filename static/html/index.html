@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login manager</title>
+        <script src="static/bower_components/angular/angular.js"></script>
+        <script src="static/bower_components/angular-material/angular-material.js"></script>
+        <script src="static/bower_components/angular-route/angular-route.js"></script>
+        <link rel="stylesheet" href="static/bower_components/angular-material/angular-material.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="static/bower_components/angular-animate/angular-animate.js"></script>
+        <script src="static/bower_components/angular-aria/angular-aria.js"></script>
+        <script src="static/js/app.js"></script>
+        <script src="static/js/login.js"></script>
+        <script src="static/js/welcome.js"></script>
+    </head>
+
+    <body ng-app="myApp" ng-cloak>
+        <md-toolbar>
+            <h1 class="md-toolbar-tools">Welcome</h1>
+        </md-toolbar>
+        <div flex="50" flex-offset="25" layout="column" layout-align="center">
+            <div ng-view>
+            </div>
+        </div>
+    </body>
+</html>
