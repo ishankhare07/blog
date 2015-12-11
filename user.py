@@ -7,7 +7,12 @@ import json
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://test:test@localhost'
+try:
+    # running on heroku
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+except KeyError:
+    # running on localhost
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://test:test@localhost'
 
 db = SQLAlchemy(app)
 
