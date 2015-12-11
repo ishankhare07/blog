@@ -6,13 +6,11 @@ import flask
 @app.route('/api/login', methods=['POST'])
 def login():
     data        = request.get_json()
-    print(data)
     username    = data['username']
     password    = data['password']
     try:
         user = db.session.query(User).filter_by(email=username).one()
     except orm.exc.NoResultFound as noUser:
-        print(flask.jsonify({"auth_failure": "username/email does not exists"}))
         return flask.jsonify({"auth_failure": "username/email does not exists"})
     if user.check_password(password):
         token = user.generate_token()
