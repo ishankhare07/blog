@@ -6,21 +6,31 @@
         <script src="static/bower_components/angular-material/angular-material.js"></script>
         <script src="static/bower_components/angular-route/angular-route.js"></script>
         <link rel="stylesheet" href="static/bower_components/angular-material/angular-material.css">
+        <link rel="stylesheet" href="static/css/main.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="static/bower_components/angular-animate/angular-animate.js"></script>
         <script src="static/bower_components/angular-aria/angular-aria.js"></script>
         <script src="static/js/app.js"></script>
         <script src="static/js/login.js"></script>
         <script src="static/js/welcome.js"></script>
+        <base href="/">
     </head>
 
     <body ng-app="myApp" ng-cloak>
-        <md-toolbar>
-            <h1 class="md-toolbar-tools">Welcome</h1>
+        <md-toolbar ng-controller="pageController as pgCtrl">
+            <div class="md-toolbar-tools md-fab-actions" layout-padding>
+                <md-button class="md-icon-button" ng-click="pgCtrl.gotoHome()">
+                    <md-icon md-svg-src="static/icons/ic_home_white_24px.svg"></md-icon>
+                </md-button>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="pgCtrl.gotoLogin()">
+                    <md-icon md-svg-src="static/icons/ic_account_circle_white_24px.svg"></md-icon>
+                </md-button>
+            </div>
         </md-toolbar>
-        <div flex="50" flex-offset="25" layout="column" layout-align="center">
+        <md-content flex="50" flex-offset="25" layout="column" layout-align="center">
             <div ng-view>
             </div>
-        </div>
+        </md-content>
     </body>
 </html>

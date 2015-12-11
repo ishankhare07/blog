@@ -1,7 +1,7 @@
 <md-content class="md-padding">
     <md-card>
         <md-card-content ng-controller="loginController as loginCtrl">
-            <form name="loginForm" layout="column" layout-align="center" ng-submit="loginCtrl.submitLogin()">
+            <form name="loginForm" layout="column" ng-submit="loginCtrl.submitLogin()">
                 <md-input-container>
                     <label>Email</label>
                     <input type="email" name="email" ng-model="loginCtrl.email" required>

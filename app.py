@@ -12,6 +12,7 @@ def login():
     try:
         user = db.session.query(User).filter_by(email=username).one()
     except orm.exc.NoResultFound as noUser:
+        print(flask.jsonify({"auth_failure": "username/email does not exists"}))
         return flask.jsonify({"auth_failure": "username/email does not exists"})
     if user.check_password(password):
         token = user.generate_token()
@@ -87,4 +88,4 @@ def index():
 
 if __name__ == "__main__":
     db.create_all()
-    app.run(debug=True)
+    app.run(debug=False)

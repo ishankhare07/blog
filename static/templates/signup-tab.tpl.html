@@ -3,7 +3,7 @@
         <md-card-content ng-controller="signupController as signupCtrl">
             <form name="signupForm" layout="column" layout-align="center"
                 ng-submit="signupCtrl.signup()">
-                <md-input-container>
+                <md-input-container flex>
                     <label>Firstname</label>
                     <input type="text" name = "firstname" ng-model="signupCtrl.firstname" required>
                     <div ng-messages="signupForm.firstname.$error">

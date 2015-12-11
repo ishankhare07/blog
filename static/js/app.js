@@ -27,15 +27,26 @@ angular.module('myApp')
         };
     });
 
-angular.module('myApp').config(function($routeProvider) {
+angular.module('myApp').config(function($routeProvider, $locationProvider) {
     $routeProvider.when('/login', {
-        templateUrl: 'static/templates/login.tpl.html',
-        controller: 'loginController'
+        templateUrl: 'static/templates/login.tpl.html'
     })
 
-    // .when('/', {
-    //     templateUrl: '/static/templates/welcome.tpl.html',
-    //     controller: 'welcomeController',
-    //     controllerAs: 'wel'
-    // })
+    .when('/', {
+        templateUrl: '/static/templates/welcome.tpl.html',
+        controller: 'welcomeController',
+        controllerAs: 'wel'
+    });
+
+    $locationProvider.html5Mode(true);
 });
+
+angular.module('myApp').controller('pageController', function($location) {
+    this.gotoHome = function() {
+        $location.path('/');
+    };
+
+    this.gotoLogin = function() {
+        $location.path('/login');
+    }
+})
