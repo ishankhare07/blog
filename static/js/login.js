@@ -71,7 +71,7 @@ angular.module('myApp').controller('signupController', function($http, $mdToast)
                 'password': self.passwd
             }).then(function(response) {
                 data = response.data;
-                console.log(data);
+                $mdToast.showSimple('Signup successfull');
             }, function(err) {
                 console.log(err);
             });
