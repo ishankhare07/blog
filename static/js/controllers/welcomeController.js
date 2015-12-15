@@ -6,4 +6,4 @@ angular.module('myApp').controller('welcomeController', function($location, logi
     }
     this.key = loginManager.api_token;
     this.username = loginManager.email;
-})
+});
