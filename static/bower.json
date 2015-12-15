@@ -18,9 +18,6 @@
   ],
   "dependencies": {
     "angular-material": "master",
-    "angular-route": "~1.4.8"
-  },
-  "resolutions": {
-    "angular-material": "master"
+    "angular-route": "~1.4.8",
   }
 }
