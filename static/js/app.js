@@ -7,8 +7,6 @@ angular.module('myApp').config(function($routeProvider, $locationProvider) {
 
     .when('/', {
         templateUrl: '/static/templates/welcome.tpl.html',
-        controller: 'welcomeController',
-        controllerAs: 'wel'
     });
 
     $locationProvider.html5Mode(true);

@@ -44,6 +44,11 @@ angular.module('myApp').controller('signupController', function($http, $mdToast)
             }).then(function(response) {
                 data = response.data;
                 $mdToast.showSimple('Signup successfull');
+                
+                loginManager.setLoggedIn(true);
+                loginManager.api_token = data.api_token;
+                loginManager.email = self.email;
+
             }, function(err) {
                 console.log(err);
             });

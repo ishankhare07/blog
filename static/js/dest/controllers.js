@@ -9,9 +9,11 @@ angular.module('myApp').controller('loginController', function($http, $mdToast, 
             data = response.data;
             if (data.status == 'login success') {
                 $mdToast.showSimple('Login Successfull');
-                loginManager.logged_in = true;
+
+                loginManager.setLoggedIn(true);
                 loginManager.api_token = data.api_token;
                 loginManager.email = self.email;
+
             } else if (data['auth_failure'].search("not exists") > -1) {
                 // email does not exists
                 $mdToast.showSimple(data.auth_failure);
@@ -71,6 +73,11 @@ angular.module('myApp').controller('signupController', function($http, $mdToast)
             }).then(function(response) {
                 data = response.data;
                 $mdToast.showSimple('Signup successfull');
+                
+                loginManager.setLoggedIn(true);
+                loginManager.api_token = data.api_token;
+                loginManager.email = self.email;
+
             }, function(err) {
                 console.log(err);
             });
@@ -80,10 +87,14 @@ angular.module('myApp').controller('signupController', function($http, $mdToast)
 
 angular.module('myApp').controller('welcomeController', function($location, loginManager) {
     console.log(loginManager.api_token, loginManager.email);
+
+    this.key = loginManager.api_token;
+    this.email = loginManager.email;
+
+    console.log(loginManager.api_token, loginManager.email);
+
     if (!loginManager.logged_in) {
         console.log('redirecting')
         $location.path('/login');
     }
-    this.key = loginManager.api_token;
-    this.username = loginManager.email;
 });
