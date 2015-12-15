@@ -20,7 +20,7 @@ gulp.task('services', function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch('js/controllers/*.js', ['controllers']);
-    gulp.watch('js/directives/*.js', ['directives']);
-    gulp.watch('js/services/*.js', ['services']);
+    gulp.watch('controllers/*.js', ['controllers']);
+    gulp.watch('directives/*.js', ['directives']);
+    gulp.watch('services/*.js', ['services']);
 });
