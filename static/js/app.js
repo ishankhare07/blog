@@ -15,6 +15,7 @@ angular.module('myApp').config(function($routeProvider, $locationProvider) {
 });
 
 angular.module('myApp').controller('pageController', function($location) {
+
     this.gotoHome = function() {
         $location.path('/');
     };
