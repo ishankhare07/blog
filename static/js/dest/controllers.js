@@ -32,8 +32,7 @@ angular.module('myApp').controller('signupController', function($http, $mdToast)
     this.unique_email = true;
 
     this.checkIfEmailExists = function() {
-        $http.post('/api/signup', {
-            "check_existing": true,
+        $http.post('/api/checkExistingEmail', {
             "username": self.email
         }).then(function(response) {
             data = response.data;
@@ -73,7 +72,7 @@ angular.module('myApp').controller('signupController', function($http, $mdToast)
             }).then(function(response) {
                 data = response.data;
                 $mdToast.showSimple('Signup successfull');
-                
+
                 loginManager.setLoggedIn(true);
                 loginManager.api_token = data.api_token;
                 loginManager.email = self.email;
