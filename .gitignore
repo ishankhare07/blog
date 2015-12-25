@@ -1,5 +1,5 @@
 *.swp
 venv
 *.pyc
-static/node_modules
+*/static/node_modules
 __pycache__
