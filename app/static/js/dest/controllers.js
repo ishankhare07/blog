@@ -14,12 +14,12 @@ angular.module('myApp').controller('loginController', function($http, $mdToast, 
                 loginManager.api_token = data.api_token;
                 loginManager.email = self.email;
 
-            } else if (data['auth_failure'].search("not exists") > -1) {
+            } else if (data['error'].search("not exists") > -1) {
                 // email does not exists
-                $mdToast.showSimple(data.auth_failure);
+                $mdToast.showSimple(data.error);
             } else {
                 // password mismatch
-                $mdToast.showSimple(data.auth_failure);
+                $mdToast.showSimple(data.error);
             }
         }, function(err) {
             console.log(err);
