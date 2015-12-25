@@ -1,4 +1,4 @@
-from models import db, User
+from .models import db, User
 from flask_sqlalchemy import orm
 from flask_restful import Resource, Api, reqparse
 from flask import Flask
@@ -6,6 +6,7 @@ import flask
 import os
 
 app = Flask(__name__)
+db.init_app(app)
 api = Api(app)
 
 try:
@@ -126,6 +127,5 @@ def index():
 
 if __name__ == "__main__":
     with app.app_context():
-        db.init_app(app)
         db.create_all()
     app.run(debug=False)
