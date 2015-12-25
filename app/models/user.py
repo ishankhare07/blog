@@ -1,10 +1,8 @@
-from flask_sqlalchemy import SQLAlchemy
 from passlib.apps import custom_app_context as pwd_context
+from . import db
 import os
 import hashlib
 import json
-
-db = SQLAlchemy()
 
 class User(db.Model):
     __tablename__ = 'users'

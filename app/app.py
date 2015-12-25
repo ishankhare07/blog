@@ -1,8 +1,9 @@
-from user import model, db, User
+from models import db, User
 from flask_sqlalchemy import orm
 from flask_restful import Resource, Api, reqparse
-from flask import request, Flask
+from flask import Flask
 import flask
+import os
 
 app = Flask(__name__)
 api = Api(app)
@@ -124,5 +125,7 @@ def index():
     return app.send_static_file('html/index.html')
 
 if __name__ == "__main__":
-    db.create_all()
+    with app.app_context():
+        db.init_app(app)
+        db.create_all()
     app.run(debug=False)
