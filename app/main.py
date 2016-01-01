@@ -1,4 +1,4 @@
-from .models import db, User
+from .models import *
 from flask_sqlalchemy import orm
 from flask_restful import Resource, Api, reqparse
 from flask import Flask
@@ -105,7 +105,8 @@ class Signup(Resource):
         user = User(firstname,
                     lastname,
                     email,
-                    password)
+                    password,
+                    db.session.query(Role.id).filter_by(name='User').first()[0])
 
         db.session.add(user)
         db.session.commit()

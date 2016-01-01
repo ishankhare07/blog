@@ -12,12 +12,14 @@ class User(db.Model):
     email           = db.Column(db.String, unique=True, nullable=False)
     password_hash   = db.Column(db.String, nullable=False)
     token           = db.Column(db.String)
+    role_id         = db.Column(db.Integer, db.ForeignKey('roles.id'))
 
-    def __init__(self, firstname, lastname, email, password):
+    def __init__(self, firstname, lastname, email, password , role):
         self.firstname = firstname
         self.lastname = lastname
         self.email = email
         self.password_hash = pwd_context.encrypt(password)
+        self.role_id = role
 
     def __repr__(self):
         return '<User %r>' %self.email
