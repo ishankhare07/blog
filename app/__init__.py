@@ -1,1 +1,3 @@
-from .main import app
+__all__ = ['app', 'db']
+
+from .main import app, db
