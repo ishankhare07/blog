@@ -1,10 +1,17 @@
 <md-card ng-controller="welcomeController as wel">
+    <md-card-header>
+        <md-card-avatar>
+            <img src="http://placehold.it/50x50" class="md-user-avatar">
+        </md-card-avatar>
+        <md-card-header-text>
+            <span class="md-title"> {{ wel.email }} </span>
+            <span class="md-subhead"> Role </span>
+        </md-card-header-text>
+    </md-card-header>
+    <img src="http://placehold.it/1000x400" class="md-card-image">
     <md-card-title>
-        <md-card-title-text>Welcome</md-card-title-text>
+        <md-card-title-text>
+            <span class="md-headline"> Welcome </span>
+        </md-card-title-text>
     </md-card-title>
-    <md-card-content>
-        <p>
-            Hello {{ wel.email }}
-        </p>
-    </md-card-content>
 </md-card>
