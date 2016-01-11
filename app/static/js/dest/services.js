@@ -1,10 +1,41 @@
 angular.module('myApp')
-    .factory('loginManager', function($location, $mdToast) {
+    .factory('loginManager', function($mdMedia, $mdDialog, $location, $mdToast) {
         this.logged_in = false
         self = this;
 
         this.getLoggedIn = function() {
             return self.logged_in;
+        };
+
+        this.presentLogin = function(ev) {
+            var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
+            $mdDialog.show({
+                controller: self.DialogController,
+                templateUrl: '/static/templates/login.tpl.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true,
+                fullscreen: useFullScreen
+            })
+            .then(function(answer) {
+                $scope.status = 'You said the information was "' + answer + '".';
+            }, function() {
+                $scope.status = 'You cancelled the dialog.';
+            });
+        };
+
+        this.DialogController = function($scope, $mdDialog) {
+            $scope.hide = function() {
+                $mdDialog.hide();
+            };
+
+            $scope.cancel = function() {
+                $mdDialog.cancel();
+            };
+
+            $scope.answer = function() {
+                $mdDialog.hide(answer);
+            };
         };
 
         this.setLoggedIn = function(state) {
