@@ -12,7 +12,9 @@ angular.module('myApp').controller('loginController', function($http, $mdToast, 
 
                 loginManager.setLoggedIn(true);
                 loginManager.api_token = data.api_token;
-                loginManager.email = self.email;
+                data.email = self.email;
+
+                loginManager.storeCredentials(data);
 
             } else if (data['error'].search("not exists") > -1) {
                 // email does not exists
