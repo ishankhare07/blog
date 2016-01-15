@@ -30,6 +30,8 @@ angular.module('myApp')
         };
 
         this.DialogController = function($scope, $mdDialog) {
+
+            // listening for login success from loginController
             $scope.$on('login-success', function() {
                 $mdDialog.hide();
             });
