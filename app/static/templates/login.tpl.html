@@ -1,12 +1,25 @@
-<md-tabs md-dynamic-height md-border-bottom md-center-tabs="true" ng-cloak>
-    <md-tab label="Login">
-        <div login>
-
+<md-dialog flex="50">
+    <md-toolbar class="md-accent">
+        <div class="md-toolbar-tools">
+            <h2>You need to login first</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-svg-src="/static/icons/ic_close_white_24px.svg"></md-icon>
+            </md-button>
         </div>
-    </md-tab>
-    <md-tab label="Signup">
-        <div signup>
+    </md-toolbar>
+    <md-dialog-content ng-cloak>
+        <md-tabs md-dynamic-height md-border-bottom md-center-tabs="true">
+            <md-tab label="Login">
+                <div login>
 
-        </div>
-    </md-tab>
-</md-tabs>
+                </div>
+            </md-tab>
+            <md-tab label="Signup">
+                <div signup>
+
+                </div>
+            </md-tab>
+        </md-tabs>
+    </md-dialog-content>
+</md-dialog>
