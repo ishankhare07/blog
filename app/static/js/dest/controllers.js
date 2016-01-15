@@ -27,6 +27,13 @@ angular.module('myApp').controller('loginController', function($http, $mdToast, 
     }
 });
 
+angular.module('myApp').controller('profileController', function($location, loginManager) {
+    if(!loginManager.getLoggedIn()) {
+        $location.path('/')
+    }
+    this.lm = loginManager;
+});
+
 angular.module('myApp').controller('signupController', function($http, $mdToast) {
     var self = this;
     this.unique_email = true;
@@ -82,8 +89,4 @@ angular.module('myApp').controller('signupController', function($http, $mdToast)
             });
         }
     }
-});
-
-angular.module('myApp').controller('welcomeController', function($location, loginManager) {
-    this.lm = loginManager;
 });

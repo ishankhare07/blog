@@ -15,12 +15,9 @@ angular.module('myApp')
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose: true,
-                fullscreen: useFullScreen
-            })
-            .then(function(answer) {
-                $scope.status = 'You said the information was "' + answer + '".';
-            }, function() {
-                $scope.status = 'You cancelled the dialog.';
+                fullscreen: useFullScreen,
+                openFrom: '#loginButton',
+                closeTo: '#loginButton'
             });
         };
 
