@@ -1,4 +1,4 @@
-var app = angular.module('myApp',['ngMaterial', 'ui.router', 'ngRoute']);
+var app = angular.module('myApp',['ngMaterial', 'ui.router', 'ngRoute', 'LocalStorageModule']);
 
 angular.module('myApp').config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
@@ -8,7 +8,13 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider, $loc
         url: '/profile',
         templateUrl: 'static/templates/profile.tpl.html',
         controller: 'profileController',
-    });
+    })
+
+    .state('home', {
+        url: '/',
+        template: ''
+    })
+    ;
 });
 
 angular.module('myApp').controller('pageController', function(loginManager) {
@@ -18,3 +24,7 @@ angular.module('myApp').controller('pageController', function(loginManager) {
 
     this.lm = loginManager;
 })
+
+angular.module('myApp').config(function(localStorageServiceProvider) {
+    localStorageServiceProvider.setPrefix('smallBlog');
+});
