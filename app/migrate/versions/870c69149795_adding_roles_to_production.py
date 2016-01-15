@@ -1,14 +1,14 @@
-"""added roles table
+"""adding roles to production
 
-Revision ID: e87e4b8e290c
-Revises: 
-Create Date: 2015-12-28 02:49:48.105002
+Revision ID: 870c69149795
+Revises: 3547de5814bb
+Create Date: 2016-01-03 00:32:05.602700
 
 """
 
 # revision identifiers, used by Alembic.
-revision = 'e87e4b8e290c'
-down_revision = None
+revision = '870c69149795'
+down_revision = '3547de5814bb'
 branch_labels = None
 depends_on = None
 

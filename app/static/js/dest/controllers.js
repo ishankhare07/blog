@@ -12,7 +12,9 @@ angular.module('myApp').controller('loginController', function($http, $mdToast, 
 
                 loginManager.setLoggedIn(true);
                 loginManager.api_token = data.api_token;
-                loginManager.email = self.email;
+                data.email = self.email;
+
+                loginManager.storeCredentials(data);
 
             } else if (data['error'].search("not exists") > -1) {
                 // email does not exists
@@ -25,6 +27,13 @@ angular.module('myApp').controller('loginController', function($http, $mdToast, 
             console.log(err);
         });
     }
+});
+
+angular.module('myApp').controller('profileController', function($location, loginManager) {
+    if(!loginManager.getLoggedIn()) {
+        $location.path('/')
+    }
+    this.lm = loginManager;
 });
 
 angular.module('myApp').controller('signupController', function($http, $mdToast) {
@@ -82,8 +91,4 @@ angular.module('myApp').controller('signupController', function($http, $mdToast)
             });
         }
     }
-});
-
-angular.module('myApp').controller('welcomeController', function($location, loginManager) {
-    this.lm = loginManager;
 });

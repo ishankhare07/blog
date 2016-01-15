@@ -122,7 +122,7 @@ api.add_resource(Signup, '/api/signup')
 api.add_resource(CheckExistingEmail, '/api/checkExistingEmail')
 
 @app.route('/')
-@app.route('/login')
+@app.route('/profile')
 def index():
     return app.send_static_file('html/index.html')
 

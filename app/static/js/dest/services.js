@@ -1,9 +1,17 @@
 angular.module('myApp')
-    .factory('loginManager', function($mdMedia, $mdDialog, $location, $mdToast) {
+    .factory('loginManager', function($mdMedia, $mdDialog, $location, $mdToast, localStorageService) {
         this.logged_in = false
         self = this;
 
         this.getLoggedIn = function() {
+            var credentials = localStorageService.get('credentials');
+
+            if (credentials) {
+                credentials = JSON.parse(credentials);
+                self.credentials = credentials;
+                self.logged_in = true;
+            }
+
             return self.logged_in;
         };
 
@@ -15,12 +23,9 @@ angular.module('myApp')
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose: true,
-                fullscreen: useFullScreen
-            })
-            .then(function(answer) {
-                $scope.status = 'You said the information was "' + answer + '".';
-            }, function() {
-                $scope.status = 'You cancelled the dialog.';
+                fullscreen: useFullScreen,
+                openFrom: '#loginButton',
+                closeTo: '#loginButton'
             });
         };
 
@@ -42,17 +47,21 @@ angular.module('myApp')
             if (state == true) {
                 // logged in
                 self.logged_in = true;
-                $location.path('/');
             } else {
                 // logged out
                 self.logged_in = false;
-                self.reset_api_token();
-                $location.path('/login');
+                $location.path('/');
             }
         };
 
-        this.reset_api_token = function() {
+        this.storeCredentials = function(credentials) {
+            localStorageService.set('credentials', JSON.stringify(credentials));
+        }
+
+        this.logout = function() {
+            self.setLoggedIn(false);
             self.api_token = null;
+            localStorageService.clearAll();
         }
 
         return this;
