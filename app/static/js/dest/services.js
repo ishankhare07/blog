@@ -30,6 +30,12 @@ angular.module('myApp')
         };
 
         this.DialogController = function($scope, $mdDialog) {
+
+            // listening for login success from loginController
+            $scope.$on('login-success', function() {
+                $mdDialog.hide();
+            });
+
             $scope.hide = function() {
                 $mdDialog.hide();
             };
@@ -47,6 +53,7 @@ angular.module('myApp')
             if (state == true) {
                 // logged in
                 self.logged_in = true;
+                //$mdDialog.hide();
             } else {
                 // logged out
                 self.logged_in = false;
