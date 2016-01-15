@@ -1,4 +1,4 @@
-angular.module('myApp').controller('loginController', function($http, $mdToast, loginManager) {
+angular.module('myApp').controller('loginController', function($http, $mdToast, $rootScope, loginManager) {
     var self = this;
 
     this.submitLogin = function() {
@@ -15,6 +15,9 @@ angular.module('myApp').controller('loginController', function($http, $mdToast, 
                 data.email = self.email;
 
                 loginManager.storeCredentials(data);
+
+                // for hiding the dialog
+                $rootScope.$broadcast('login-success');
 
             } else if (data['error'].search("not exists") > -1) {
                 // email does not exists
