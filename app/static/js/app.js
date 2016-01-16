@@ -17,14 +17,6 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider, $loc
     ;
 });
 
-angular.module('myApp').controller('pageController', function(loginManager) {
-    this.gotoLogin = function(ev) {
-        loginManager.presentLogin(ev);
-    }
-
-    this.lm = loginManager;
-})
-
 angular.module('myApp').config(function(localStorageServiceProvider) {
     localStorageServiceProvider.setPrefix('smallBlog');
 });
