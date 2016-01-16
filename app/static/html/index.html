@@ -35,7 +35,9 @@
                     <md-icon md-svg-src="static/icons/ic_account_circle_white_24px.svg"></md-icon>
                 </md-button>
 
-                <md-fab-speed-dial md-direction="left" class="md-fling" ng-if="pgCtrl.lm.getLoggedIn()">
+                <md-fab-speed-dial md-direction="left" class="md-fling" ng-if="pgCtrl.lm.getLoggedIn()"
+                    ng-mouseover="pgCtrl.expanded=true" ng-mouseleave="pgCtrl.expanded=false"
+                    md-open="pgCtrl.expanded">
                     <md-fab-trigger>
                         <md-button class="md-fab md-accent md-mini">
                             <md-tooltip>Options</md-tooltip>
