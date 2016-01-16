@@ -22,45 +22,59 @@
     </head>
 
     <body ng-app="myApp" ng-cloak>
-        <md-toolbar ng-controller="pageController as pgCtrl">
-            <div class="md-toolbar-tools md-fab-actions" layout-padding>
-                <md-button class="md-fab md-accent md-mini">
-                    <md-icon md-svg-src="static/icons/ic_menu_white_24px.svg"></md-icon>
-                </md-button>
-                <span flex></span>
+        <div ng-controller="mainPageController as pgCtrl">
+            <md-toolbar>
+                <div class="md-toolbar-tools md-fab-actions" layout-padding>
+                    <md-button class="md-fab md-accent md-mini" ng-click="pgCtrl.leftNav()">
+                        <md-icon md-svg-src="static/icons/ic_menu_white_24px.svg"></md-icon>
+                    </md-button>
+                    <span flex></span>
 
-                <md-button class="md-fab md-accent md-mini" ng-click="pgCtrl.gotoLogin()"
-                    ng-if="!pgCtrl.lm.getLoggedIn()" id="loginButton">
-                    <md-tooltip>Login</md-tooltip>
-                    <md-icon md-svg-src="static/icons/ic_account_circle_white_24px.svg"></md-icon>
-                </md-button>
+                    <md-button class="md-fab md-accent md-mini" ng-click="pgCtrl.gotoLogin()"
+                        ng-if="!pgCtrl.lm.getLoggedIn()" id="loginButton">
+                        <md-tooltip>Login</md-tooltip>
+                        <md-icon md-svg-src="static/icons/ic_account_circle_white_24px.svg"></md-icon>
+                    </md-button>
 
-                <md-fab-speed-dial md-direction="left" class="md-fling" ng-if="pgCtrl.lm.getLoggedIn()"
-                    ng-mouseover="pgCtrl.expanded=true" ng-mouseleave="pgCtrl.expanded=false"
-                    md-open="pgCtrl.expanded">
-                    <md-fab-trigger>
-                        <md-button class="md-fab md-accent md-mini">
-                            <md-tooltip>Options</md-tooltip>
-                            <md-icon md-svg-src="static/icons/ic_settings_white_24px.svg"></md-icon>
-                        </md-button>
-                    </md-fab-trigger>
-
-                    <md-fab-actions>
-                        <a href="/profile">
-                            <md-button class="md-fab md-accent md-mini md-hue-1">
-                                <md-tooltip>Profile</md-tooltip>
-                                <md-icon md-svg-src="static/icons/ic_account_circle_white_24px.svg"></md-icon>
+                    <md-fab-speed-dial md-direction="left" class="md-fling" ng-if="pgCtrl.lm.getLoggedIn()"
+                        ng-mouseover="pgCtrl.expanded=true" ng-mouseleave="pgCtrl.expanded=false"
+                        md-open="pgCtrl.expanded">
+                        <md-fab-trigger>
+                            <md-button class="md-fab md-accent md-mini">
+                                <md-tooltip>Options</md-tooltip>
+                                <md-icon md-svg-src="static/icons/ic_settings_white_24px.svg"></md-icon>
                             </md-button>
-                        </a>
+                        </md-fab-trigger>
 
-                        <md-button class="md-fab md-mini md-primary md-hue-1" ng-click="pgCtrl.lm.logout()">
-                            <md-tooltip>Logout</md-tooltip>
-                            <md-icon md-svg-src="static/icons/ic_exit_to_app_white_24px.svg"></md-icon>
+                        <md-fab-actions>
+                            <a href="/profile">
+                                <md-button class="md-fab md-accent md-mini md-hue-1">
+                                    <md-tooltip>Profile</md-tooltip>
+                                    <md-icon md-svg-src="static/icons/ic_account_circle_white_24px.svg"></md-icon>
+                                </md-button>
+                            </a>
+
+                            <md-button class="md-fab md-mini md-primary md-hue-1" ng-click="pgCtrl.lm.logout()">
+                                <md-tooltip>Logout</md-tooltip>
+                                <md-icon md-svg-src="static/icons/ic_exit_to_app_white_24px.svg"></md-icon>
+                            </md-button>
+                        </md-fab-actions>
+                    </md-fab-speed-dial>
+                </div>
+            </md-toolbar>
+
+            <md-sidenav md-component-id="leftSidenav">
+                <md-toolbar>
+                    <div class="md-toolbar-tools md-fab-actions">
+                        <md-button class="md-fab md-mini md-accent" ng-click="pgCtrl.leftNav()">
+                            <md-icon md-svg-src="static/icons/ic_arrow_back_white_24px.svg"></md-icon>
                         </md-button>
-                    </md-fab-actions>
-                </md-fab-speed-dial>
-            </div>
-        </md-toolbar>
+                    </div>
+                </md-toolbar>
+            </md-sidenav>
+
+        </div>
+
         <md-content flex-gt-sm="50" flex-offset-gt-sm="25" layout="column" layout-align="center">
             <div ui-view>
             </div>
