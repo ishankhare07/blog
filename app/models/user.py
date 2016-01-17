@@ -37,8 +37,3 @@ class User(db.Model):
         self.token = hashlib.sha512(os.urandom(24)).hexdigest()
         return self.token
 
-    def jsonify(self):
-        return json.dumps({
-            "id": self.id,
-            "email": self.email,
-            })

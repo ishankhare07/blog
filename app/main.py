@@ -51,12 +51,19 @@ class GetDetails(Resource):
     def post(self):
         args = self.reqparser.parse_args()
 
-        user = db.session.query(User).filter_by(token=args['token']).all()
+        user_data = db.session.query(User.id,
+                User.firstname,
+                User.lastname,
+                User.email,
+                user.location,
+                User.about_me,
+                User.member_since,
+                User.last_seen).filter_by(token=args['api_token']).all()
 
-        if not user:
+        if not user_data:
             return flask.jsonify({"auth_failure": "invalid token"})
         else:
-            return user[0].jsonify()
+            return flask.jsonify(user_data[0])
 
 class CheckExistingEmail(Resource):
     def __init__(self):
