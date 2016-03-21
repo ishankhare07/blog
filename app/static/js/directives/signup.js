@@ -1,7 +1,7 @@
 angular.module('myApp')
     .directive('signup', function() {
         return {
-            restrict: 'A',
+            restrict: 'E',
             templateUrl: 'static/templates/signup-tab.tpl.html',
         };
     });
