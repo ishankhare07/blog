@@ -1,7 +1,7 @@
 angular.module('myApp')
-    .factory('loginManager', function($mdMedia, $mdDialog, $location, $mdToast, localStorageService) {
+    .factory('loginManager', function($injector, $http, $mdMedia, $mdDialog, $location, $mdToast, localStorageService) {
         this.logged_in = false
-        self = this;
+        var self = this;
 
         this.getLoggedIn = function() {
             var credentials = localStorageService.get('credentials');
@@ -70,6 +70,31 @@ angular.module('myApp')
             self.api_token = null;
             localStorageService.clearAll();
         }
+
+        this.getNewToken = function() {
+            var credentials = JSON.parse(localStorageService.get('credentials'));
+            $http.post('/api/login', {
+                'email': credentials.email,
+                'password': credentials.passwd
+            }).then(function(reponse) {
+                self.api_token = reponse.data.api_token;
+
+                // update with new api_token
+                credentials.api_token = self.api_token;
+
+                // update localstorage with new data
+                localStorageService.set('credentials', JSON.stringify(credentials));
+
+                // update credentials inside the loginmanager itself
+                self.credentials = credentials;
+
+                // ask userInfoService to update info with new api_key
+                $injector.get('userInfoService').initInfo();
+
+            }, function(err) {
+                console.log(err);
+            });
+        };
 
         return this;
     });

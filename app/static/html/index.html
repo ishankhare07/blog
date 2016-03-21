@@ -3,81 +3,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <head>
         <title>Login manager</title>
-        <script src="static/bower_components/angular/angular.js"></script>
-        <script src="static/bower_components/angular-material/angular-material.js"></script>
-        <script src="static/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-        <script src="static/bower_components/angular-route/angular-route.js"></script>
-        <link rel="stylesheet" href="static/bower_components/angular-material/angular-material.css">
-        <link rel="stylesheet" href="static/css/main.css">
+        <script src="/static/bower_components/angular/angular.js"></script>
+        <script src="/static/bower_components/angular-material/angular-material.js"></script>
+        <script src="/static/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="/static/bower_components/angular-route/angular-route.js"></script>
+        <link rel="stylesheet" href="/static/bower_components/angular-material/angular-material.css">
+        <link rel="stylesheet" href="/static/css/main.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script src="static/bower_components/angular-animate/angular-animate.js"></script>
-        <script src="static/bower_components/angular-aria/angular-aria.js"></script>
-        <script src="static/bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+        <script src="/static/bower_components/angular-animate/angular-animate.js"></script>
+        <script src="/static/bower_components/angular-aria/angular-aria.js"></script>
+        <script src="/static/bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
 
-        <script src="static/js/app.js"></script>
-        <script src="static/js/dest/controllers.js"></script>
-        <script src="static/js/dest/directives.js"></script>
-        <script src="static/js/dest/services.js"></script>
+        <script src="/static/js/app.js"></script>
+        <script src="/static/js/dest/controllers.js"></script>
+        <script src="/static/js/dest/directives.js"></script>
+        <script src="/static/js/dest/services.js"></script>
         <base href="/">
     </head>
 
     <body ng-app="myApp" ng-cloak>
-        <div ng-controller="mainPageController as pgCtrl">
-            <md-toolbar>
-                <div class="md-toolbar-tools md-fab-actions" layout-padding>
-                    <md-button class="md-fab md-accent md-mini" ng-click="pgCtrl.leftNav()">
-                        <md-icon md-svg-src="static/icons/ic_menu_white_24px.svg"></md-icon>
-                    </md-button>
-                    <span flex></span>
-
-                    <md-button class="md-fab md-accent md-mini" ng-click="pgCtrl.gotoLogin()"
-                        ng-if="!pgCtrl.lm.getLoggedIn()" id="loginButton">
-                        <md-tooltip>Login</md-tooltip>
-                        <md-icon md-svg-src="static/icons/ic_account_circle_white_24px.svg"></md-icon>
-                    </md-button>
-
-                    <md-fab-speed-dial md-direction="left" class="md-fling" ng-if="pgCtrl.lm.getLoggedIn()"
-                        ng-mouseover="pgCtrl.expanded=true" ng-mouseleave="pgCtrl.expanded=false"
-                        md-open="pgCtrl.expanded">
-                        <md-fab-trigger>
-                            <md-button class="md-fab md-accent md-mini">
-                                <md-tooltip>Options</md-tooltip>
-                                <md-icon md-svg-src="static/icons/ic_settings_white_24px.svg"></md-icon>
-                            </md-button>
-                        </md-fab-trigger>
-
-                        <md-fab-actions>
-                            <a href="/profile">
-                                <md-button class="md-fab md-accent md-mini md-hue-1">
-                                    <md-tooltip>Profile</md-tooltip>
-                                    <md-icon md-svg-src="static/icons/ic_account_circle_white_24px.svg"></md-icon>
-                                </md-button>
-                            </a>
-
-                            <md-button class="md-fab md-mini md-primary md-hue-1" ng-click="pgCtrl.lm.logout()">
-                                <md-tooltip>Logout</md-tooltip>
-                                <md-icon md-svg-src="static/icons/ic_exit_to_app_white_24px.svg"></md-icon>
-                            </md-button>
-                        </md-fab-actions>
-                    </md-fab-speed-dial>
-                </div>
-            </md-toolbar>
-
-            <md-sidenav md-component-id="leftSidenav">
-                <md-toolbar>
-                    <div class="md-toolbar-tools md-fab-actions">
-                        <md-button class="md-fab md-mini md-accent" ng-click="pgCtrl.leftNav()">
-                            <md-icon md-svg-src="static/icons/ic_arrow_back_white_24px.svg"></md-icon>
+        <div class="light-grey-bg">
+            <div ng-controller="mainPageController as pgCtrl">
+                <md-toolbar class="md-whiteframe-3dp">
+                    <div class="md-toolbar-tools md-fab-actions" layout-padding>
+                        <md-button class="md-fab md-accent md-mini" ng-click="pgCtrl.leftNav()">
+                            <md-icon md-svg-src="static/icons/ic_menu_white_24px.svg"></md-icon>
                         </md-button>
+                        <span flex></span>
+
+                        <md-button class="md-fab md-accent md-mini" ng-click="pgCtrl.gotoLogin()"
+                            ng-if="!pgCtrl.lm.getLoggedIn()" id="loginButton">
+                            <md-tooltip>Login</md-tooltip>
+                            <md-icon md-svg-src="static/icons/ic_account_circle_white_24px.svg"></md-icon>
+                        </md-button>
+
+                        <md-fab-speed-dial md-direction="left" class="md-fling" ng-if="pgCtrl.lm.getLoggedIn()"
+                            ng-mouseover="pgCtrl.expanded=true" ng-mouseleave="pgCtrl.expanded=false"
+                            md-open="pgCtrl.expanded">
+                            <md-fab-trigger>
+                                <md-button class="md-fab md-accent md-mini">
+                                    <md-tooltip>Options</md-tooltip>
+                                    <md-icon md-svg-src="static/icons/ic_settings_white_24px.svg"></md-icon>
+                                </md-button>
+                            </md-fab-trigger>
+
+                            <md-fab-actions>
+                                <a href="/profile">
+                                    <md-button class="md-fab md-accent md-mini md-hue-1">
+                                        <md-tooltip>Profile</md-tooltip>
+                                        <md-icon md-svg-src="static/icons/ic_account_circle_white_24px.svg"></md-icon>
+                                    </md-button>
+                                </a>
+
+                                <md-button class="md-fab md-mini md-primary md-hue-1" ng-click="pgCtrl.lm.logout()">
+                                    <md-tooltip>Logout</md-tooltip>
+                                    <md-icon md-svg-src="static/icons/ic_exit_to_app_white_24px.svg"></md-icon>
+                                </md-button>
+                            </md-fab-actions>
+                        </md-fab-speed-dial>
                     </div>
                 </md-toolbar>
-            </md-sidenav>
 
-        </div>
+                <md-sidenav md-component-id="leftSidenav">
+                    <md-toolbar>
+                        <div class="md-toolbar-tools md-fab-actions">
+                            <md-button class="md-fab md-mini md-accent" ng-click="pgCtrl.leftNav()">
+                                <md-icon md-svg-src="static/icons/ic_arrow_back_white_24px.svg"></md-icon>
+                            </md-button>
+                        </div>
+                    </md-toolbar>
+                </md-sidenav>
 
-        <md-content flex-gt-sm="50" flex-offset-gt-sm="25" layout="column" layout-align="center">
-            <div ui-view>
             </div>
-        </md-content>
+
+            <div flex-gt-sm="50" flex-offset-gt-sm="25" layout="row" layout-align="center">
+                <div ui-view flex>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

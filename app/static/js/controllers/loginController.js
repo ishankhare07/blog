@@ -3,7 +3,7 @@ angular.module('myApp').controller('loginController', function($http, $mdToast, 
 
     this.submitLogin = function() {
         $http.post('/api/login', {
-            "username": self.email,
+            "email": self.email,
             "password": self.passwd
         }).then(function(response) {
             data = response.data;
@@ -12,7 +12,7 @@ angular.module('myApp').controller('loginController', function($http, $mdToast, 
 
                 loginManager.setLoggedIn(true);
                 loginManager.api_token = data.api_token;
-                data.email = self.email;
+                data.passwd = self.passwd;
 
                 loginManager.storeCredentials(data);
 

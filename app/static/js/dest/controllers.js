@@ -1,9 +1,28 @@
+angular.module('myApp').controller('editProfileController', function(userInfoService, $location) {
+    userInfoService.initInfo();
+    this.UIS = userInfoService;
+
+    var self = this;
+
+    this.cancelUpdate = function() {
+        // reset updated model
+        self.UIS.initInfo();
+
+        // navigate to /profile
+        $location.path('/profile');
+    };
+
+    this.update = function() {
+        self.UIS.updateInfo();
+    }
+});
+
 angular.module('myApp').controller('loginController', function($http, $mdToast, $rootScope, loginManager) {
     var self = this;
 
     this.submitLogin = function() {
         $http.post('/api/login', {
-            "username": self.email,
+            "email": self.email,
             "password": self.passwd
         }).then(function(response) {
             data = response.data;
@@ -12,7 +31,7 @@ angular.module('myApp').controller('loginController', function($http, $mdToast, 
 
                 loginManager.setLoggedIn(true);
                 loginManager.api_token = data.api_token;
-                data.email = self.email;
+                data.passwd = self.passwd;
 
                 loginManager.storeCredentials(data);
 
@@ -45,11 +64,21 @@ angular.module('myApp').controller('mainPageController', function(loginManager, 
     this.lm = loginManager;
 });
 
-angular.module('myApp').controller('profileController', function($location, loginManager) {
+angular.module('myApp').controller('profileController', function($location, loginManager, userInfoService) {
     if(!loginManager.getLoggedIn()) {
-        $location.path('/')
+        $location.path('/');
     }
-    this.lm = loginManager;
+
+    if(!userInfoService.has_info) {
+        // if info does not exists, ask for it first
+        userInfoService.initInfo();
+    }
+
+    this.UIS    = userInfoService;
+
+    this.edit = function() {
+        $location.path('/profile/edit');
+    }
 });
 
 angular.module('myApp').controller('signupController', function($http, $mdToast) {

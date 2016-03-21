@@ -13,8 +13,8 @@ class User(db.Model):
     email           = db.Column(db.String, unique=True, nullable=False)
     location        = db.Column(db.String)
     about_me        = db.Column(db.String)
-    member_since    = db.Column(db.DateTime(), default=datetime.utcnow)
-    last_seen       = db.Column(db.DateTime(), default=datetime.utcnow)
+    member_since    = db.Column(db.DateTime(), default=datetime.utcnow())
+    last_seen       = db.Column(db.DateTime(), default=datetime.utcnow())
 
     password_hash   = db.Column(db.String, nullable=False)
     token           = db.Column(db.String)
