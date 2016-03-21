@@ -1,17 +1,36 @@
-<md-card ng-controller="profileController as pc">
+<md-card>
     <md-card-header>
         <md-card-avatar>
             <img src="http://placehold.it/50x50" class="md-user-avatar">
         </md-card-avatar>
         <md-card-header-text>
-            <span class="md-title"> {{ pc.lm.credentials.email }} </span>
-            <span class="md-subhead"> Role </span>
+            <span class="md-title"> {{ pc.UIS.email }} </span>
+            <div class="md-subhead" layout="row" layout-padding>
+                <span> User-id: {{ pc.UIS.id }} </span>
+                <span flex> Last Seen: {{ pc.UIS.last_seen }}</span>
+            </div>
         </md-card-header-text>
+
+        <md-button class="md-icon-button" ng-click="pc.edit()">
+            <md-tooltip>Edit</md-tooltip>
+            <md-icon md-svg-src="static/icons/ic_edit_black_24px.svg"></md-icon>
+        </md-button>
     </md-card-header>
     <img src="http://placehold.it/1000x400" class="md-card-image">
     <md-card-title>
         <md-card-title-text>
-            <span class="md-headline"> Welcome </span>
+            <span class="md-headline"> {{ pc.UIS.firstname }} {{ pc.UIS.lastname }} </span>
         </md-card-title-text>
     </md-card-title>
+    <md-card-content layout="column" layout-padding>
+        <div>
+            About Me: {{ pc.UIS.about_me }}
+        </div>
+        <div layout="row">
+            <md-icon md-svg-src="static/icons/ic_location_on_black_24px.svg"></md-icon>
+            <span flex layout-padding> {{ pc.UIS.location }} </span>
+        </div>
+
+        <div> Member Since: {{ pc.UIS.member_since }} </div>
+    </md-card-content>
 </md-card>
