@@ -27,7 +27,7 @@ class Login(Resource):
                     "id":           user.id,
                     "email":        user.email,
                     "expires_at":   (datetime.datetime.now() +
-                                    datetime.timedelta(seconds=2*60)).timestamp()       # 2 hrs
+                                    datetime.timedelta(seconds=2*60*60)).timestamp()       # 2 hrs
                     })
 
                 # return generated token
