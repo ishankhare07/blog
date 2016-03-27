@@ -7,7 +7,7 @@
             <span class="md-title"> {{ pc.UIS.email }} </span>
             <div class="md-subhead" layout="row" layout-padding>
                 <span> User-id: {{ pc.UIS.id }} </span>
-                <span flex> Last Seen: {{ pc.UIS.last_seen }}</span>
+                <span flex> Last Seen: {{ pc.UIS.last_seen.toDateString() }}</span>
             </div>
         </md-card-header-text>
 

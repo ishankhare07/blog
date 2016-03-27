@@ -138,11 +138,13 @@ angular.module('myApp').factory('userInfoService', function(loginManager, $http)
             self.firstname      = data.firstname;
             self.lastname       = data.lastname;
             self.about_me       = data.about_me;
-            self.last_seen      = data.last_seen;
+            self.last_seen      = new Date(data.last_seen);
             self.location       = data.location;
             self.member_since   = data.member_since;
 
             self.has_info       = true;
+
+            console.log(typeof(self.last_seen));
 
         }, function(err) {
             console.log(err.data);
