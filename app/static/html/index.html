@@ -48,12 +48,10 @@
                             </md-fab-trigger>
 
                             <md-fab-actions>
-                                <a href="/profile">
-                                    <md-button class="md-fab md-accent md-mini md-hue-1">
-                                        <md-tooltip>Profile</md-tooltip>
-                                        <md-icon md-svg-src="static/icons/ic_account_circle_white_24px.svg"></md-icon>
-                                    </md-button>
-                                </a>
+                                <md-button class="md-fab md-accent md-mini md-hue-1" ng-click="pgCtrl.navigate('/profile')">
+                                    <md-tooltip>Profile</md-tooltip>
+                                    <md-icon md-svg-src="static/icons/ic_account_circle_white_24px.svg"></md-icon>
+                                </md-button>
 
                                 <md-button class="md-fab md-mini md-primary md-hue-1" ng-click="pgCtrl.lm.logout()">
                                     <md-tooltip>Logout</md-tooltip>
@@ -72,6 +70,12 @@
                             </md-button>
                         </div>
                     </md-toolbar>
+                    <md-list flex>
+                        <md-list-item ng-click="pgCtrl.navigate('/')" flex>
+                            <md-icon md-svg-src="static/icons/ic_home_black_24px.svg"></md-icon>
+                            <span flex>Home</span>
+                        </md-list-item>
+                    </md-list>
                 </md-sidenav>
 
             </div>
