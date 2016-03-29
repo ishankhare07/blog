@@ -24,7 +24,7 @@
     <body ng-app="myApp" ng-cloak>
         <div class="light-grey-bg">
             <div ng-controller="mainPageController as pgCtrl">
-                <md-toolbar class="md-whiteframe-3dp">
+                <md-toolbar class="md-whiteframe-3dp" id="main-toolbar">
                     <div class="md-toolbar-tools md-fab-actions" layout-padding>
                         <md-button class="md-fab md-accent md-mini" ng-click="pgCtrl.leftNav()">
                             <md-icon md-svg-src="static/icons/ic_menu_white_24px.svg"></md-icon>
@@ -48,12 +48,12 @@
                             </md-fab-trigger>
 
                             <md-fab-actions>
-                                <md-button class="md-fab md-accent md-mini md-hue-1" ng-click="pgCtrl.navigate('/profile')">
+                                <md-button class="md-fab md-accent md-mini md-hue-1" ng-click="pgCtrl.navigate('/profile/view')">
                                     <md-tooltip>Profile</md-tooltip>
                                     <md-icon md-svg-src="static/icons/ic_account_circle_white_24px.svg"></md-icon>
                                 </md-button>
 
-                                <md-button class="md-fab md-mini md-primary md-hue-1" ng-click="pgCtrl.lm.logout()">
+                                <md-button class="md-fab md-mini md-warn" ng-click="pgCtrl.lm.logout()">
                                     <md-tooltip>Logout</md-tooltip>
                                     <md-icon md-svg-src="static/icons/ic_exit_to_app_white_24px.svg"></md-icon>
                                 </md-button>
@@ -78,11 +78,17 @@
                     </md-list>
                 </md-sidenav>
 
-            </div>
-
-            <div flex-gt-sm="50" flex-offset-gt-sm="25" layout="row" layout-align="center">
-                <div ui-view flex>
+                <div ui-view>
                 </div>
+
+                <md-fab-speed-dial class="md-fling md-fab-bottom-right" id="compose-button">
+                    <md-fab-trigger>
+                        <md-button class="md-fab md-warn md-hue-2">
+                            <md-tooltip md-direction="left">Compose</md-tooltip>
+                            <md-icon md-svg-src="static/icons/ic_create_white_24px.svg"></md-icon>
+                        </md-button>
+                    </md-fab-trigger>
+                </md-fab-speed-dial>
             </div>
         </div>
     </body>
