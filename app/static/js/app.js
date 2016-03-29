@@ -4,21 +4,27 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider, $loc
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/');
 
-    $stateProvider.state('profile', {
-        url: '/profile',
-        templateUrl: 'static/templates/profile.tpl.html',
-        controller: 'profileController',
-        controllerAs: 'pc',
-    })
-
-    .state('home', {
+    $stateProvider.state('home', {
         url: '/',
         template: ''
     })
 
-    .state('editProfile', {
-        url: '/profile/edit',
-        templateUrl: 'static/templates/editProfile.tpl.html',
+    .state('profile', {
+        abstract: true,
+        url: '/profile',
+        templateUrl: 'static/templates/profile.tpl.html'
+    })
+
+    .state('profile.view', {
+        url: '/view',               // will be later changed to /profile/:id
+        templateUrl: 'static/templates/profile-view.tpl.html',
+        controller: 'profileController',
+        controllerAs: 'pc'
+    })
+
+    .state('profile.edit', {
+        url: '/edit',               // with above change this will become /profile/:id/edit
+        templateUrl: 'static/templates/profile-edit.tpl.html',
         controller: 'editProfileController',
         controllerAs: 'editCtrl'
     })

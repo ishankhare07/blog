@@ -16,8 +16,8 @@ api.add_resource(CheckExistingEmail, '/api/checkExistingEmail')
 
 # static routes
 @app.route('/')
-@app.route('/profile')
-@app.route('/profile/edit')
+@app.route('/profile/view')         # will be later changed to /profile/<int:id>
+@app.route('/profile/edit')         # with the above change this will become /profile/<int:id>/edit
 def index():
     return app.send_static_file('html/index.html')
 
