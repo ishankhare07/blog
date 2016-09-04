@@ -28,6 +28,13 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider, $loc
         controller: 'editProfileController',
         controllerAs: 'editCtrl'
     })
+
+    .state('compose', {
+        url: '/compose',
+        templateUrl: '/static/templates/compose.tpl.html',
+        controller: 'composeController',
+        controllerAs: 'composeCtrl'
+    })
     ;
 });
 

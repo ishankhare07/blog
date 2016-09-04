@@ -11,6 +11,7 @@ angular.module('myApp').controller('mainPageController', function($location, log
     this.navigate = function(url) {
         $mdSidenav('leftSidenav').close();         // auto-close sidenav after click if open
         $location.path(url);
+        console.log(url);
     };
 
     this.lm = loginManager;

@@ -1,0 +1,38 @@
+<div flex layout="row" layout-align="center">
+    <span flex></span>
+    <md-card flex-gt-sm="75" ng-cloak flex>
+        <md-card-title>
+            <md-card-title-text>
+                <md-input-container>
+                    <label>Title</label>
+                    <input />
+                </md-input-container>
+
+                <label class="md-subhead">Tags</label>
+                <md-chips ng-model="composeCtrl.tags"></md-chips>
+            </md-card-title-text>
+        </md-card-title>
+
+        <md-card-content>
+            <md-tabs>
+                <md-tab id="edit">
+                    <md-tab-label>
+                        Edit
+                    </md-tab-label>
+                    <md-tab-body>
+
+                    </md-tab-body>
+                </md-tab>
+
+                <md-tab id="preview">
+                    <md-tab-label>
+                        Preview
+                    </md-tab-label>
+                    <md-tab-body>
+                    </md-tab-body>
+                </md-tab>
+            </md-tabs>
+        </md-card-content>
+    </md-card>
+    <span flex></span>
+</div>

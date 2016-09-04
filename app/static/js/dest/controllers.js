@@ -1,3 +1,7 @@
+angular.module('myApp').controller('composeController', function($stateParams) {
+    this.tags = [];
+});
+
 angular.module('myApp').controller('editProfileController', function(userInfoService, $location) {
     userInfoService.initInfo();
     this.UIS = userInfoService;
@@ -64,6 +68,7 @@ angular.module('myApp').controller('mainPageController', function($location, log
     this.navigate = function(url) {
         $mdSidenav('leftSidenav').close();         // auto-close sidenav after click if open
         $location.path(url);
+        console.log(url);
     };
 
     this.lm = loginManager;
